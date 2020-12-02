@@ -1,0 +1,79 @@
+<div class="container" *ngIf="this.receta; else loading">
+    <div class="row filtrar">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="card" style="width: 22rem;">
+                <img class="card-img-top" [src]="this.receta.image" alt="Card image cap">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+            <ngb-alert style="display: none;" id="uno" type="success" (close)="cerrar('uno')">Se agregó la receta a tus recetas</ngb-alert>
+            <ngb-alert style="display: none;" id="dos" type="info" (close)="cerrar('dos')">Se elimino la receta de tus recetas</ngb-alert>
+
+            <p class=" top">{{this.receta.title}}</p>
+            <small>{{receta.creditsText}}</small>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <h5>Ready in {{this.receta.readyInMinutes}} minutes</h5>
+                </div>
+                <div class="col"></div>
+                <div class="col">
+                    <a class="btn btn-outline-primary" (click)="agregar(receta)">Agregar/eliminar</a>
+                </div>
+            </div>
+            <h6>Score: {{this.receta.spoonacularScore}}</h6>
+            <h6>HealthScore: {{this.receta.healthScore}}</h6>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-4"></div>
+        <div class="jumbotron col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h5 class="mt-1"><strong>Summary:</strong></h5>
+            <div [innerHTML]="this.receta.summary">
+
+            </div>
+            <hr>
+            <h5 class="mt-1"><strong>Ingridients:</strong></h5>
+            <ul *ngFor="let ingrediente of this.receta.extendedIngredients">
+                <li>{{ingrediente.original}}</li>
+            </ul>
+
+            <hr>
+            <h5 class="mt-1"><strong>Instructions:</strong></h5>
+            <div *ngFor="let instrucciones of this.receta.analyzedInstructions">
+                <div *ngFor="let instruccion of instrucciones.steps">
+                    <p><strong>{{instruccion.number}}</strong> {{instruccion.step}}</p>
+                </div>
+            </div>
+            <hr>
+
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div width="1600" height="1600">
+                <canvas id="bar"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            <div width="1600" height="1600">
+                <canvas id="bar2"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #loading>
+    <div class="row text-center mt-5 pt-5 ">
+        <div class="col ">
+            <i class="fas fa-sync-alt fa-5x fa-spin "></i>
+        </div>
+    </div>
+</ng-template>
