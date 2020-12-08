@@ -9,6 +9,7 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
 import { MisRecetasComponent } from './components/mis-recetas/mis-recetas.component';
 import { RecetaSpoonacularComponent } from './components/receta-spoonacular/receta-spoonacular.component';
 import { SimilarSpoonacularComponent } from './components/similar-spoonacular/similar-spoonacular.component';
+import { RecetaEdamamComponent } from './components/receta-edamam/receta-edamam.component';
 
 import { CanGuard } from './auth/guards/can-guard';
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'mis-recetas', component: MisRecetasComponent, canActivate: [CanGuard]},
   {path: 'receta-spoonacular/:id_receta', component: RecetaSpoonacularComponent, canActivate: [CanGuard]},
   {path: 'similar-spoonacular/:id_receta', component: SimilarSpoonacularComponent, canActivate: [CanGuard]},
+  {path: 'receta-edamam/:uri', component: RecetaEdamamComponent, canActivate: [CanGuard]},
   {path: 'buscador/:busquedaEdaman', component: BuscadorComponent, canActivate: [CanGuard]},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', pathMatch: 'full', redirectTo: 'home'},
