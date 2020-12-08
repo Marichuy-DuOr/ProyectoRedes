@@ -20,6 +20,7 @@ import { RecetasComponent } from './components/recetas/recetas.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
 import { RecetaSpoonacularComponent } from './components/receta-spoonacular/receta-spoonacular.component';
 import { MisRecetasComponent } from './components/mis-recetas/mis-recetas.component';
+import { RecetaEdamamComponent } from './components/receta-edamam/receta-edamam.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { MisRecetasComponent } from './components/mis-recetas/mis-recetas.compon
     RecetasComponent,
     BuscadorComponent,
     RecetaSpoonacularComponent,
-    MisRecetasComponent
+    MisRecetasComponent,
+    RecetaEdamamComponent
   ],
   imports: [
     BrowserModule,
