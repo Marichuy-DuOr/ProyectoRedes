@@ -20,6 +20,7 @@ import { RecetasComponent } from './components/recetas/recetas.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
 import { RecetaSpoonacularComponent } from './components/receta-spoonacular/receta-spoonacular.component';
 import { MisRecetasComponent } from './components/mis-recetas/mis-recetas.component';
+import { SimilarSpoonacularComponent } from './components/similar-spoonacular/similar-spoonacular.component';
 import { RecetaEdamamComponent } from './components/receta-edamam/receta-edamam.component';
 
 
@@ -37,6 +38,7 @@ import { RecetaEdamamComponent } from './components/receta-edamam/receta-edamam.
     BuscadorComponent,
     RecetaSpoonacularComponent,
     MisRecetasComponent,
+    SimilarSpoonacularComponent,
     RecetaEdamamComponent
   ],
   imports: [

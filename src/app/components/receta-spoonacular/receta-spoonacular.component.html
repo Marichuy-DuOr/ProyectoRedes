@@ -18,7 +18,8 @@
                 </div>
                 <div class="col"></div>
                 <div class="col">
-                    <a class="btn btn-outline-primary" (click)="agregar(receta)">Agregar/eliminar</a>
+                    <a class="btn btn-outline-success mb-3" (click)="agregar(receta)">Agregar/eliminar</a>
+                    <a class="btn btn-outline-info" [routerLink]="['/similar-spoonacular',idReceta]">Más como esta</a>
                 </div>
             </div>
             <h6>Score: {{this.receta.spoonacularScore}}</h6>

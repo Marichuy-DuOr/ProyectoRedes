@@ -28,12 +28,13 @@ export class RecetaEdamamComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    const elUri = this.uri.split('#');
     const body = {
-      uri: this.uri
+      uri: elUri[1]
     };
 
-    console.log(body.uri);
-    this.mysqlService.alta(`${environment.API_URL}/recipeEdamam`,body)
+    this.mysqlService.alta(`${environment.API_URL}/recipeEdamam`, body)
     .then((laData) => {
       console.log(laData);
     })
