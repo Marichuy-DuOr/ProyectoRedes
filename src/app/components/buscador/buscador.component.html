@@ -8,6 +8,8 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ngb-alert style="display: none;" id="dos" type="info" (close)="cerrar('dos')">Ya haz agregado esa receta</ngb-alert>
+            <ngb-alert style="display: none;" id="uno" type="success" (close)="cerrar('uno')">Se agregó a tus recetas</ngb-alert>
                     <div class="card-columns">
                         <div class="card text-center" style="width: 18rem;" *ngFor="let receta of recetas">
                             <a [routerLink]="['/receta-edamam', receta.recipe.uri]">
@@ -16,7 +18,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><strong>{{receta.recipe.label}}</strong></h5>
                                 <p class="card-text">{{receta.recipe.source}}</p>
-                                <p class="card-text">{{receta.recipe.uri}}</p>
+                                <a class="btn btn-outline-primary" (click)="agregar(receta)">Agregar a mis recetas</a>
                             </div>
                         </div>
                     </div>

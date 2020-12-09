@@ -1,59 +1,85 @@
 <div class="container" *ngIf="this.receta; else loading">
     <div class="row filtrar">
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" [src]="this.receta.image" alt="Card image cap">
+        <div class="card col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="card" style="width: 22rem;">
+                            <img class="card-img-top" [src]="this.receta.image" alt="Card image cap">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                        <ngb-alert style="display: none;" id="uno" type="success" (close)="cerrar('uno')">Se agregó la
+                            receta a tus recetas</ngb-alert>
+                        <ngb-alert style="display: none;" id="dos" type="info" (close)="cerrar('dos')">Se elimino la
+                            receta de tus recetas</ngb-alert>
+
+                        <p class="top">{{this.receta.title}}</p>
+                        <div class="col text-center">
+                            <small>{{receta.creditsText}}</small>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <p class="h5 text-center"> <strong> Ready in: </strong> <br> {{this.receta.readyInMinutes}} minutes</p>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 border-left">
+                                <p class="h5 text-center"> <strong> Score: </strong> <br> {{this.receta.spoonacularScore}} </p>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 border-left">
+                                <p class="h5 text-center"> <strong> HealthScore: </strong> <br> {{this.receta.healthScore}} </p>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row-reverse mt-4">
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <a class="btn btn-outline-danger btn-block" (click)="agregar(receta)">Agregar/Eliminar</a>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row-reverse mt-4">
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <a class="btn btn-outline-primary btn-block" [routerLink]="['/similar-spoonacular',idReceta]">Más como esta</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-4"></div>
+                    <div class="jumbotron col-xs-12 col-sm-12 col-md-12 col-lg-12 text-justify">
+                        <h5 class="mt-1"><strong>Summary:</strong></h5>
+                        <div [innerHTML]="this.receta.summary">
+
+                        </div>
+                        <hr>
+                        <h5 class="mt-1"><strong>Ingridients:</strong></h5>
+                        <ul *ngFor="let ingrediente of this.receta.extendedIngredients">
+                            <li>{{ingrediente.original}}</li>
+                        </ul>
+
+                        <hr>
+                        <h5 class="mt-1"><strong>Instructions:</strong></h5>
+                        <div *ngFor="let instrucciones of this.receta.analyzedInstructions">
+                            <div *ngFor="let instruccion of instrucciones.steps">
+                                <p><strong>{{instruccion.number}}</strong> {{instruccion.step}}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col"></div>
+                </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-            <ngb-alert style="display: none;" id="uno" type="success" (close)="cerrar('uno')">Se agregó la receta a tus recetas</ngb-alert>
-            <ngb-alert style="display: none;" id="dos" type="info" (close)="cerrar('dos')">Se elimino la receta de tus recetas</ngb-alert>
-
-            <p class=" top">{{this.receta.title}}</p>
-            <small>{{receta.creditsText}}</small>
-            <hr>
-            <div class="row">
-                <div class="col">
-                    <h5>Ready in {{this.receta.readyInMinutes}} minutes</h5>
-                </div>
-                <div class="col"></div>
-                <div class="col">
-                    <a class="btn btn-outline-success mb-3" (click)="agregar(receta)">Agregar/eliminar</a>
-                    <a class="btn btn-outline-info" [routerLink]="['/similar-spoonacular',idReceta]">Más como esta</a>
-                </div>
-            </div>
-            <h6>Score: {{this.receta.spoonacularScore}}</h6>
-            <h6>HealthScore: {{this.receta.healthScore}}</h6>
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-4"></div>
-        <div class="jumbotron col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <h5 class="mt-1"><strong>Summary:</strong></h5>
-            <div [innerHTML]="this.receta.summary">
-
-            </div>
-            <hr>
-            <h5 class="mt-1"><strong>Ingridients:</strong></h5>
-            <ul *ngFor="let ingrediente of this.receta.extendedIngredients">
-                <li>{{ingrediente.original}}</li>
-            </ul>
-
-            <hr>
-            <h5 class="mt-1"><strong>Instructions:</strong></h5>
-            <div *ngFor="let instrucciones of this.receta.analyzedInstructions">
-                <div *ngFor="let instruccion of instrucciones.steps">
-                    <p><strong>{{instruccion.number}}</strong> {{instruccion.step}}</p>
-                </div>
-            </div>
-            <hr>
-
-        </div>
-        <div class="col"></div>
     </div>
 </div>
 
 <div class="container">
+    <div class="row my-4 position-static">
+        <div class="col-sm-12">
+            <div class="text-center">
+                <p class="h2 joyeria">Nutrients</p>
+                <hr class="separator" />
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col">
             <div width="1600" height="1600">

@@ -17,14 +17,23 @@
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['recetas']">Recetas</a>
             </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['mis-recetas']">Mis Recetas</a>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Mis Recetas
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" [routerLink]="['mis-recetas']">Spoonacular</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['mis-recetasE']">Edamam</a>
+                </div>
             </li>
 
         </ul>
         <div class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Buscar recetas..." aria-label="Buscar" #buscartexto (keyup.enter)=buscar(buscartexto.value)>
-            <button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="buscar(buscartexto.value)">Buscar con Edaman</button>
+            <input class="form-control mr-sm-2" type="text" placeholder="Buscar con Edamam..." aria-label="Buscar" #buscartexto (keyup.enter)=buscar(buscartexto.value)>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="buscar(buscartexto.value)">Recetas</button>
+            <button class="btn btn-outline-success ml-1 my-2 my-sm-0" type="submit" (click)="buscar2(buscartexto.value)">Alimentos</button>
         </div>
 
     </div>

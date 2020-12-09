@@ -16,4 +16,8 @@ export class NavbarComponent implements OnInit {
   buscar(busquedaEdaman: string) {
     this.router.navigate(['/buscador', busquedaEdaman]);
   }
+
+  buscar2(busquedaEdaman: string) {
+    this.router.navigate(['/buscador2', busquedaEdaman]);
+  }
 }

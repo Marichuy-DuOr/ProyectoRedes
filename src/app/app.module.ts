@@ -22,6 +22,8 @@ import { RecetaSpoonacularComponent } from './components/receta-spoonacular/rece
 import { MisRecetasComponent } from './components/mis-recetas/mis-recetas.component';
 import { SimilarSpoonacularComponent } from './components/similar-spoonacular/similar-spoonacular.component';
 import { RecetaEdamamComponent } from './components/receta-edamam/receta-edamam.component';
+import { MisRecetasEComponent } from './components/mis-recetas-e/mis-recetas-e.component';
+import { Buscador2Component } from './components/buscador2/buscador2.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { RecetaEdamamComponent } from './components/receta-edamam/receta-edamam.
     RecetaSpoonacularComponent,
     MisRecetasComponent,
     SimilarSpoonacularComponent,
-    RecetaEdamamComponent
+    RecetaEdamamComponent,
+    MisRecetasEComponent,
+    Buscador2Component
   ],
   imports: [
     BrowserModule,

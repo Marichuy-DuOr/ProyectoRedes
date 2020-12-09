@@ -10,6 +10,8 @@ import { MisRecetasComponent } from './components/mis-recetas/mis-recetas.compon
 import { RecetaSpoonacularComponent } from './components/receta-spoonacular/receta-spoonacular.component';
 import { SimilarSpoonacularComponent } from './components/similar-spoonacular/similar-spoonacular.component';
 import { RecetaEdamamComponent } from './components/receta-edamam/receta-edamam.component';
+import { MisRecetasEComponent } from './components/mis-recetas-e/mis-recetas-e.component';
+import { Buscador2Component } from './components/buscador2/buscador2.component';
 
 import { CanGuard } from './auth/guards/can-guard';
 
@@ -20,10 +22,12 @@ const routes: Routes = [
   {path: 'perfil-usuario', component: PerfilUsuarioComponent, canActivate: [CanGuard]  },
   {path: 'recetas', component: RecetasComponent, canActivate: [CanGuard]},
   {path: 'mis-recetas', component: MisRecetasComponent, canActivate: [CanGuard]},
+  {path: 'mis-recetasE', component: MisRecetasEComponent, canActivate: [CanGuard]},
   {path: 'receta-spoonacular/:id_receta', component: RecetaSpoonacularComponent, canActivate: [CanGuard]},
   {path: 'similar-spoonacular/:id_receta', component: SimilarSpoonacularComponent, canActivate: [CanGuard]},
   {path: 'receta-edamam/:uri', component: RecetaEdamamComponent, canActivate: [CanGuard]},
   {path: 'buscador/:busquedaEdaman', component: BuscadorComponent, canActivate: [CanGuard]},
+  {path: 'buscador2/:busquedaEdaman', component: Buscador2Component, canActivate: [CanGuard]},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];

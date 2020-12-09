@@ -12,12 +12,12 @@
                 <ngb-alert style="display: none;" id="uno" type="info" (close)="cerrar('uno')">Se elimino la receta</ngb-alert>
                 <div class="card-columns">
                     <div class="card text-center" style="width: 18rem;" *ngFor="let receta of recetas">
-                        <a [routerLink]="['/receta-spoonacular',receta.id_receta]">
+                        <a [routerLink]="['/receta-edamam', receta.uri_receta]">
                             <img class="card-img-top receta" [src]="receta.image" alt="Card image cap">
                         </a>
                         <div class="card-body">
-                            <h5 class="card-title"><strong>{{receta.title}}</strong></h5>
-                            <p class="card-text">{{receta.creditsText}}</p>
+                            <h5 class="card-title"><strong>{{receta.label}}</strong></h5>
+                            <p class="card-text">{{receta.source}}</p>
                             <a class="btn btn-outline-danger" (click)="eliminar(receta.id)">Eliminar de mis recetas</a>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
 
 <ng-template #elseBlock>
     <div class="mt-5 pt-5">
-        <div class="alert alert-info">No haz agregado recetas, regresa cuando hayas terminado de explorar la palicación c:</div>
+        <div class="alert alert-info">No haz agregado recetas, regresa cuando hayas terminado de explorar la aplicación</div>
     </div>
 </ng-template>
 
