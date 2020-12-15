@@ -11,7 +11,7 @@ import { environment } from './../../../environments/environment';
 export class Buscador2Component implements OnInit {
 
   public food;
-  public nutrients = [];
+  public nutrients;
   public etiquetas = [];
   public busqueda;
 
@@ -31,11 +31,12 @@ export class Buscador2Component implements OnInit {
     this.mysqlService.consulta(`${environment.API_URL}/buscar2Edaman/${this.busqueda}`)
       .subscribe((res: any) => {
         console.log(res);
-        this.food = res.parsed[0].food;
-        console.log(this.food);
 
         this.nutrients = res.hints;
-        console.log(this.nutrients);
+
+        if ( this.nutrients.length > 0 ) {
+          this.food = res.parsed[0].food;
+        }
       });
   }
 

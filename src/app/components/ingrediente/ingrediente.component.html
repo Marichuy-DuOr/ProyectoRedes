@@ -1,0 +1,74 @@
+<div class="container filtrar">
+    <div class="row" *ngIf="ingrediente; else loading">
+        <div class="col-md-2 col-lg-2"></div>
+        <div class="card form__top col-xs-12 col-sm-12 col-md-8 col-lg-8">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="card ml-4 mt-2" style="width: 12rem;">
+                            <img class="card-img-top" src="https://spoonacular.com/cdn/ingredients_500x500/{{ingrediente.image}}" alt="Card image cap" onError="this.src='assets/noimage.png'">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 text-center">
+
+
+                        <div class="jumbotron text-justify">
+                            <div class="row">
+                                <div class="col">
+                                    <h2 class="text-center top">{{ingrediente.original | titlecase}} </h2>
+                                    <div class="col text-center">
+                                        <p class="h6">{{ingrediente.categoryPath}}</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <h6><strong>Cost: </strong>{{ingrediente.estimatedCost.value}} {{ingrediente.estimatedCost.unit}}</h6>
+                                    <h6><strong>Consistency: </strong>{{ingrediente.consistency}}</h6>
+                                    <h6><strong>{{ingrediente.nutrition.nutrients[0].title}}: </strong>{{ingrediente.nutrition.nutrients[0].amount}} {{ingrediente.nutrition.nutrients[0].unit}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="text-center">
+                <p class="h2 joyeria">Nutrients</p>
+                <hr class="separator" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            Grams
+            <div width="1600" height="1600">
+                <canvas id="bar"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            Milligrams
+            <div width="1600" height="1600">
+                <canvas id="bar2"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            Micrograms
+            <div width="1600" height="1600">
+                <canvas id="bar3"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <div class="row text-center mt-5 pt-5">
+        <div class="col">
+            <i class="fas fa-sync-alt fa-5x fa-spin"></i>
+        </div>
+    </div>
+</ng-template>

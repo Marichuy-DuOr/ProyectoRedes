@@ -22,6 +22,9 @@ export class RecetaSpoonacularComponent implements OnInit {
   public ejeX2 = [];
   public ejeY2 = [];
 
+  public ejeX3 = [];
+  public ejeY3 = [];
+
   constructor(private activatedRoute: ActivatedRoute, private mysqlService: MysqlService, private graficarService: GraficarService) {
     this.activatedRoute.params.subscribe( params => {
       this.idReceta = params['id_receta'];
@@ -38,20 +41,18 @@ export class RecetaSpoonacularComponent implements OnInit {
         if (o.unit === 'g' ) {
           this.ejeX.push(o.title);
           this.ejeY.push(o.amount);
-        }
-      });
-      this.graficarService.create(this.ejeX, this.ejeY, 'bar', 'bar', 'Nutrients g');
-
-      res.nutrition.nutrients.map(o => {
-        if (o.unit === 'g' ) {
-          this.ejeX.push(o.title);
-          this.ejeY.push(o.amount);
         } else if (o.unit === 'mg') {
           this.ejeX2.push(o.title);
           this.ejeY2.push(o.amount);
+        } else if (o.unit === 'µg') {
+          this.ejeX3.push(o.title);
+          this.ejeY3.push(o.amount);
         }
       });
+
+      this.graficarService.create(this.ejeX, this.ejeY, 'bar', 'bar', 'Nutrients g');
       this.graficarService.create(this.ejeX2, this.ejeY2, 'bar2', 'pie', 'Nutrients mg');
+      this.graficarService.create(this.ejeX3, this.ejeY3, 'bar3', 'pie', 'Nutrients mg');
     });
   }
 

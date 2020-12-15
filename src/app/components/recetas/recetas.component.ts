@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MysqlService } from '../../services/mysql.service';
 import { environment } from '../../../environments/environment';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-recetas',
@@ -11,30 +10,41 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class RecetasComponent implements OnInit {
 
   public recetas = [];
+  public band;
 
-  constructor(private router: Router, public activatedRoute: ActivatedRoute, private mysqlService: MysqlService) {
-    /*this.activatedRoute.params.subscribe( params => {
-      // parametros para cuando quieras poner recetas aleatorias no tan aleatorias xd
-    });*/
+  constructor(private mysqlService: MysqlService) {
   }
 
   ngOnInit(): void {
     this.actualizar();
+    this.band = true;
   }
 
   public actualizar() {
     this.mysqlService.consulta(`${environment.API_URL}/randomSpoonacular`)
       .subscribe((res: any) => {
-        console.log(res);
         this.recetas = res.recipes;
-        console.log(this.recetas);
+      });
+  }
+
+  buscar(busqueda: string) {
+    // this.router.navigate(['/buscador', busquedaEdaman]);
+    this.recetas = [];
+    this.mysqlService.consulta(`${environment.API_URL}/buscarSpoonacular/${busqueda}`)
+      .subscribe((res: any) => {
+        this.recetas = res.results;
+        if (this.recetas.length > 0) {
+          this.band = true;
+        } else {
+          this.band = false;
+        }
       });
   }
 
   public agregar(receta) {
     this.mysqlService.consulta(`${environment.API_URL}/userRecipeSpoonacular/${receta.id}`)
       .subscribe((res: any) => {
-        if (res.array.length > 0){
+        if (res.array.length > 0) {
           document.getElementById('dos').style.display = 'block';
           setTimeout(() => document.getElementById('dos').style.display = 'none', 2000);
         } else {
