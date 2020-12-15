@@ -5,7 +5,7 @@
                 <ul *ngIf="user$ | async as user; else login">
                     <li class="nav-item" style="cursor: pointer">
                         <a aria-label="Perfil" [routerLink]="['perfil-usuario']" class="ico" data-toggle="tooltip" data-placement="bottom" title="Perfil">
-                            <img src="{{ user.imagen }}" height="30px" width="30px" style="border-radius: 50%"> {{ user.nombre }}
+                            <img src="{{ user.imagen }}" height="30px" width="30px" style="border-radius: 50%" onError="this.src='assets/star.svg'"> {{ user.nombre }}
                         </a>
                     </li>
                     <li class="nav-item" style="cursor: pointer ">

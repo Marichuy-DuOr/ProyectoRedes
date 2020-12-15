@@ -12,6 +12,8 @@ import { SimilarSpoonacularComponent } from './components/similar-spoonacular/si
 import { RecetaEdamamComponent } from './components/receta-edamam/receta-edamam.component';
 import { MisRecetasEComponent } from './components/mis-recetas-e/mis-recetas-e.component';
 import { Buscador2Component } from './components/buscador2/buscador2.component';
+import { IngredientesComponent } from './components/ingredientes/ingredientes.component';
+import { IngredienteComponent } from './components/ingrediente/ingrediente.component';
 
 import { CanGuard } from './auth/guards/can-guard';
 
@@ -21,9 +23,11 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'perfil-usuario', component: PerfilUsuarioComponent, canActivate: [CanGuard]  },
   {path: 'recetas', component: RecetasComponent, canActivate: [CanGuard]},
+  {path: 'ingredientes', component: IngredientesComponent, canActivate: [CanGuard]},
   {path: 'mis-recetas', component: MisRecetasComponent, canActivate: [CanGuard]},
   {path: 'mis-recetasE', component: MisRecetasEComponent, canActivate: [CanGuard]},
   {path: 'receta-spoonacular/:id_receta', component: RecetaSpoonacularComponent, canActivate: [CanGuard]},
+  {path: 'ingrediente-spoonacular/:id_ingrediente', component: IngredienteComponent, canActivate: [CanGuard]},
   {path: 'similar-spoonacular/:id_receta', component: SimilarSpoonacularComponent, canActivate: [CanGuard]},
   {path: 'receta-edamam/:uri', component: RecetaEdamamComponent, canActivate: [CanGuard]},
   {path: 'buscador/:busquedaEdaman', component: BuscadorComponent, canActivate: [CanGuard]},

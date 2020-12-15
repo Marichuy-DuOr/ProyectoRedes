@@ -38,32 +38,34 @@ export class GraficarService {
   // tipo   -> tipo de grafico, bar o pie, hay mas pero no los he probado
   // titulo -> etiqueta en la parte de arriba del grafico
   create(ejeX, ejeY, id, tipo, titulo) {
-    this.shuffle(this.colores);
-    this.ctx = document.getElementById(id);
-    this.ctx.getContext('2d');
-    const myChart = new Chart(this.ctx, {
-      type: tipo,
-      data: {
-        labels: ejeX,
-        datasets: [{
-          label: titulo,
-          data: ejeY,
-          backgroundColor: this.colores,
-          borderColor: this.colores,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
+    if ( ejeX.length > 0 ) {
+      this.shuffle(this.colores);
+      this.ctx = document.getElementById(id);
+      this.ctx.getContext('2d');
+      const myChart = new Chart(this.ctx, {
+        type: tipo,
+        data: {
+          labels: ejeX,
+          datasets: [{
+            label: titulo,
+            data: ejeY,
+            backgroundColor: this.colores,
+            borderColor: this.colores,
+            borderWidth: 1
           }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
         }
-      }
-    });
+      });
+    }
   }
 
   shuffle(array) { // mezcla los colores para que se usen diferentes cada vez que se genera un gráfico

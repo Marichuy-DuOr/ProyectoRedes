@@ -13,7 +13,7 @@
                 <div class="card-columns">
                     <div class="card text-center" style="width: 18rem;" *ngFor="let receta of recetas">
                         <a [routerLink]="['/receta-edamam', receta.uri_receta]">
-                            <img class="card-img-top receta" [src]="receta.image" alt="Card image cap">
+                            <img class="card-img-top receta" [src]="receta.image" alt="Card image cap" onError="this.src='assets/comida.svg'">
                         </a>
                         <div class="card-body">
                             <h5 class="card-title"><strong>{{receta.label}}</strong></h5>

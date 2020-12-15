@@ -1,78 +1,96 @@
-<div class="container filtrar">
-    <div class="row">
-        <div class="col-md-2 col-lg-2"></div>
-        <div class="card form__top col-xs-12 col-sm-12 col-md-8 col-lg-8">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                        <div class="card ml-4 mt-2" style="width: 12rem;">
-                            <img class="card-img-top" [src]="this.food.image" alt="Card image cap">
+<div *ngIf="this.nutrients; else loading">
+    <div *ngIf="this.nutrients.length > 0; else elseBlock">
+        <div class="container filtrar">
+            <div class="row">
+                <div class="col-md-2 col-lg-2"></div>
+                <div class="card form__top col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="card ml-4 mt-2" style="width: 12rem;">
+                                    <img class="card-img-top" [src]="this.food.image" alt="Card image cap">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 text-center">
+                                <h2 class="text-center top">{{this.food.label}} </h2>
+                                <div class="col text-center">
+                                    <p class="h6">{{this.food.category}}</p>
+                                </div>
+
+                                <table class="table table-hover table-sm table-bordered table-dark mt-4">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Carbs</th>
+                                            <th scope="col">Energy</th>
+                                            <th scope="col">Fat</th>
+                                            <th scope="col">Fiber</th>
+                                            <th scope="col">Protein</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>{{this.food.nutrients.CHOCDF}}</td>
+                                            <td>{{this.food.nutrients.ENERC_KCAL}}</td>
+                                            <td>{{this.food.nutrients.FAT}}</td>
+                                            <td>{{this.food.nutrients.FIBTG}}</td>
+                                            <td>{{this.food.nutrients.PROCNT}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 text-center">
-                        <h2 class="text-center top">{{this.food.label}} </h2>
-                        <div class="col text-center">
-                            <p class="h6">{{this.food.category}}</p>
-                        </div>
-                        
-                        <table class="table table-hover table-sm table-bordered table-dark mt-4">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Carbs</th>
-                                <th scope="col">Energy</th>
-                                <th scope="col">Fat</th>
-                                <th scope="col">Fiber</th>
-                                <th scope="col">Protein</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>{{this.food.nutrients.CHOCDF}}</td>
-                                <td>{{this.food.nutrients.ENERC_KCAL}}</td>
-                                <td>{{this.food.nutrients.FAT}}</td>
-                                <td>{{this.food.nutrients.FIBTG}}</td>
-                                <td>{{this.food.nutrients.PROCNT}}</td>
-                              </tr>
-                            </tbody>
-                          </table>
+
                     </div>
                 </div>
-                
             </div>
+        </div>
+
+
+        <div class="container">
+            <table class="table table-hover table-sm table-bordered mt-4">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Nutrients</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let f of this.nutrients">
+                        <th>
+                            <div class="card ml-4 mt-2" style="width: 8rem;">
+                                <img class="card-img-top" [src]="f.food.image" onError="this.src='assets/noimage.png'" alt="Card image cap">
+                            </div>
+                        </th>
+                        <th>{{f.food.label}}</th>
+                        <th>{{f.food.category}}</th>
+                        <th>
+                            Carbs: {{f.food.nutrients.CHOCDF | number : '1.0-2'}} <br> Energy: {{f.food.nutrients.ENERC_KCAL | number : '1.0-2'}} <br> Fat: {{f.food.nutrients.FAT | number : '1.0-2'}} <br> Fiber: {{f.food.nutrients.FIBTG | number : '1.0-2'}}
+                            <br> Protein: {{f.food.nutrients.PROCNT | number : '1.0-2'}}
+
+                            <br>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <table class="table table-hover table-sm table-bordered mt-4">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Category</th>
-            <th scope="col">Nutrients</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let f of this.nutrients">
-            <th>
-                <div class="card ml-4 mt-2" style="width: 8rem;">
-                    <img class="card-img-top" [src]="f.food.image" alt="Card image cap">
-                </div>
-            </th>
-            <th>{{f.food.label}}</th>
-            <th>{{f.food.category}}</th>
-            <th>
-                Carbs: {{f.food.nutrients.CHOCDF}} <br>
-                Energy: {{f.food.nutrients.ENERC_KCAL}} <br>
-                Fat: {{f.food.nutrients.FAT}} <br>
-                Fiber: {{f.food.nutrients.FIBTG}} <br>
-                Protein: {{f.food.nutrients.PROCNT}} <br>
-                Protein: {{f.food.nutrients.PROCNT}} <br>
-            </th>
-          </tr>
-        </tbody>
-    </table>
-</div>
+
+<ng-template #elseBlock>
+    <div class="container filtrar">
+        <div class="alert alert-info">No se encontró {{busqueda}} <br> Revisa otra vez lo que escribiste</div>
+    </div>
+</ng-template>
+
+<ng-template #loading>
+    <div class="row text-center mt-5 pt-5">
+        <div class="col">
+            <i class="fas fa-sync-alt fa-5x fa-spin"></i>
+        </div>
+    </div>
+</ng-template>

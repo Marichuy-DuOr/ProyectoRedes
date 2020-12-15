@@ -19,7 +19,7 @@
                         <tr>
                             <td rowspan="3">
 
-                                <img src="{{ user.imagen }}" height="200" width="200" style="border-radius: 50%">
+                                <img src="{{ user.imagen }}" height="200" width="200" style="border-radius: 50%" onError="this.src='assets/star.svg'">
                                 <p>Imagen por la api de la NASA</p>
                                 <small>Fecha de nacimiento antes de <br> 1995-06-16 se toma como año 2019</small>
                             </td>
