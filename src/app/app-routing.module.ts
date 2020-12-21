@@ -14,6 +14,7 @@ import { MisRecetasEComponent } from './components/mis-recetas-e/mis-recetas-e.c
 import { Buscador2Component } from './components/buscador2/buscador2.component';
 import { IngredientesComponent } from './components/ingredientes/ingredientes.component';
 import { IngredienteComponent } from './components/ingrediente/ingrediente.component';
+import { AboutComponent } from './shared/about/about.component';
 
 import { CanGuard } from './auth/guards/can-guard';
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'about', component: AboutComponent},
   {path: 'perfil-usuario', component: PerfilUsuarioComponent, canActivate: [CanGuard]  },
   {path: 'recetas', component: RecetasComponent, canActivate: [CanGuard]},
   {path: 'ingredientes', component: IngredientesComponent, canActivate: [CanGuard]},

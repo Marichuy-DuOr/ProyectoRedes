@@ -26,6 +26,7 @@ import { MisRecetasEComponent } from './components/mis-recetas-e/mis-recetas-e.c
 import { Buscador2Component } from './components/buscador2/buscador2.component';
 import { IngredientesComponent } from './components/ingredientes/ingredientes.component';
 import { IngredienteComponent } from './components/ingrediente/ingrediente.component';
+import { AboutComponent } from './shared/about/about.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { IngredienteComponent } from './components/ingrediente/ingrediente.compo
     MisRecetasEComponent,
     Buscador2Component,
     IngredientesComponent,
-    IngredienteComponent
+    IngredienteComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
